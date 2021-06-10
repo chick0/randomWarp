@@ -1,12 +1,13 @@
 main : xyz.ch1ck.RandomWarp
 name : RandomWarp
-version : 0.0.1
+version : 0.1.0
 api-version: '1.16'
 author: chick_0
 commands:
-  set_warp:
-    description: 랜덤 워프 장소를 등록합니다.
-    usage: /set_warp
+  setwarp:
+    description: register warp point or delete warp point
+    usage: /<command>
+    permission: op
   warp:
-    description: 등록된 워프 장소 중 한 곳으로 랜덤 이동 합니다.
-    usage: /warp
+    description: warp to random warp point
+    usage: /<command>

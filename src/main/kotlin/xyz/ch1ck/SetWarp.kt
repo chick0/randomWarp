@@ -12,14 +12,24 @@ object SetWarp : CommandExecutor {
             val player = Bukkit.getPlayer(sender.name)
             val location = player!!.location
 
-//            val config = RandomWarp().jpConfig
+            for((i, e) in WarpList.withIndex()){
+                if(e.x == location.x && e.z == location.z && e.world == player.world.name){
+                    WarpList.removeAt(i)
+                    sender.sendMessage("§f[§4-§f] ${location.x.toInt()}, ${location.y.toInt()}, ${location.z.toInt()}")
+                    return true
+                }
+            }
 
-            sender.sendMessage("워프 등록됨: ${location.x} ${location.y} ${location.z}")
-//            val prev = config.getList("warp")
-//            prev?.add(doubleArrayOf(location.x, location.y, location.z))
+            WarpList.add(WarpData(
+                player.world.name,
+                location.x,
+                location.y,
+                location.z,
+                location.yaw,
+                location.pitch
+            ))
 
-//            config.set("warp", prev)
-
+            sender.sendMessage("§f[§a+§f] ${location.x.toInt()}, ${location.y.toInt()}, ${location.z.toInt()}")
         }
         return true
     }
